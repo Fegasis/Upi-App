@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Transactions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-card class="transaction-card">
+    <ion-card-header>
+      <ion-card-title>Credit Transaction</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Amount</ion-label>
+        <ion-input [(ngModel)]="creditAmount" type="number"></ion-input>
+      </ion-item>
+      <ion-button expand="full" color="success" (click)="creditTransaction()">Credit</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="transaction-card">
+    <ion-card-header>
+      <ion-card-title>Debit Transaction</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Amount</ion-label>
+        <ion-input [(ngModel)]="debitAmount" type="number"></ion-input>
+      </ion-item>
+      <ion-button expand="full" color="danger" (click)="debitTransaction()">Debit</ion-button>
+    </ion-card-content>
+  </ion-card> -->
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Transaction History</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let transaction of transactions">
+      <ion-icon name="cash-outline" slot="start"></ion-icon>
+      <ion-label>
+        <h2>Transaction ID: {{ transaction.TRANSACTION_ID }}</h2>
+        <p>Amount: ₹{{ transaction.AMOUNT }}</p>
+        <p>Date: {{ transaction.TRANSACTION_DATE }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

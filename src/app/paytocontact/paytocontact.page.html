@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Pay to Contact</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/send-money"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="pay-to-contact-card">
+    <ion-card-header>
+      <ion-card-title>Pay to Contact</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- <ion-item>
+        <ion-label position="floating">Recipient UPI ID</ion-label>
+        <ion-input [(ngModel)]="recipient_upi_id" type="number"></ion-input>
+      </ion-item> -->
+      <ion-item>
+        <ion-label position="floating">Recipient Contact Number</ion-label>
+        <ion-input [(ngModel)]="phone_number" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Amount</ion-label>
+        <ion-input [(ngModel)]="amount" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Note</ion-label>
+        <ion-input [(ngModel)]="note" type="text"></ion-input>
+      </ion-item>
+      <ion-button expand="full" color="primary" (click)="payToContact()">Pay</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

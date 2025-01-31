@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Send Money</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/upi-home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="send-money-card">
+    <ion-card-header>
+      <ion-card-title>Send Money</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Recipient UPI ID</ion-label>
+        <ion-input [(ngModel)]="recipient_upi_id" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Amount</ion-label>
+        <ion-input [(ngModel)]="amount" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Note</ion-label>
+        <ion-input [(ngModel)]="note" type="text"></ion-input>
+      </ion-item>
+      <ion-button expand="full" color="primary" (click)="payUsingUpiId()">Pay Using UPI ID</ion-button>
+      <ion-button expand="full" color="secondary" (click)="navigateToPayToContact()">Pay to Contact</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

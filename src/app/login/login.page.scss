@@ -1,0 +1,39 @@
+.login-header {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  .login-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+  .login-header p {
+    color: gray;
+  }
+  ion-card {
+    margin: 20px;
+  }
+  ion-card-content {
+    padding: 20px;
+  }
+  ion-item {
+    margin-bottom: 15px;
+  }
+  ion-button {
+    margin-top: 20px;
+  }
+  .login-footer {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .login-footer p {
+    color: gray;
+  }
+  .login-footer a {
+    color: var(--ion-color-primary);
+    text-decoration: none;
+  }

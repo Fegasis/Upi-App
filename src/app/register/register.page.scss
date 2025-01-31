@@ -1,0 +1,39 @@
+.register-header {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  .register-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+  .register-header p {
+    color: gray;
+  }
+  ion-card {
+    margin: 20px;
+  }
+  ion-card-content {
+    padding: 20px;
+  }
+  ion-item {
+    margin-bottom: 15px;
+  }
+  ion-button {
+    margin-top: 20px;
+  }
+  .register-footer {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .register-footer p {
+    color: gray;
+  }
+  .register-footer a {
+    color: var(--ion-color-primary);
+    text-decoration: none;
+  }

@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Request Money</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Request Money</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Requester ID</ion-label>
+        <ion-input [(ngModel)]="request.requester_id" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Amount</ion-label>
+        <ion-input [(ngModel)]="request.amount" type="number"></ion-input>
+      </ion-item>
+      <ion-button expand="full" color="success" (click)="requestMoney()">Request Money</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<style>
+  ion-card {
+    margin: 20px;
+  }
+  ion-card-title {
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+  ion-item {
+    margin-bottom: 15px;
+  }
+  ion-button {
+    margin-top: 20px;
+  }
+</style>

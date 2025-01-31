@@ -1,0 +1,252 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>UPI Home</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openProfile()">
+        <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="signOut()">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-title>Welcome, {{ profile_data?.name }}!</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Good {{ timeOfDay }}! Here's your current balance: ₹{{ balance }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" color="primary" (click)="sendMoney()">
+          <ion-icon slot="start" name="send-outline"></ion-icon>
+          Send Money
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" color="secondary" (click)="requestMoney()">
+          <ion-icon slot="start" name="download-outline"></ion-icon>
+          Request Money
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" color="tertiary" (click)="scanQRCode()">
+          <ion-icon slot="start" name="qr-code-outline"></ion-icon>
+          Scan QR Code
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" color="success" (click)="payBills()">
+          <ion-icon slot="start" name="card-outline"></ion-icon>
+          Pay Bills
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Offers and Rewards</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            <p>{{ offers.description }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Notifications</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let notification of notifications">
+          <ion-label>
+            <p>{{ notification.MESSAGE }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Tips & Tutorials</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            <h2>How to Send Money</h2>
+            <p>Learn how to send money quickly and securely.</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <h2>Managing Your Profile</h2>
+            <p>Steps to update your profile information.</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqkoeDaiVKPCIbS150r_Pua7Y-JgTxJbIG-A&s"></ion-img>
+    <ion-card-content>
+      <p>Get 30% cashback on your first transaction!</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-md="3" class="button-col">
+        <ion-button expand="block" color="primary" (click)="quickAccess('recentTransactions')">
+          <ion-icon slot="start" name="time-outline"></ion-icon>
+          Recent Transactions
+        </ion-button>
+      </ion-col>
+      <ion-col size="6" size-md="3" class="button-col">
+        <ion-button expand="block" color="secondary" (click)="quickAccess('payToContactNumber')">
+          <ion-icon slot="start" name="star-outline"></ion-icon>
+          Pay Contacts
+        </ion-button>
+      </ion-col>
+      <ion-col size="6" size-md="3" class="button-col">
+        <ion-button expand="block" color="tertiary" (click)="quickAccess('quickBillPayments')">
+          <ion-icon slot="start" name="flash-outline"></ion-icon>
+          Quick Bill Payments
+        </ion-button>
+      </ion-col>
+      <ion-col size="6" size-md="3" class="button-col">
+        <ion-button expand="block" color="success" (click)="quickAccess('viewProfile')">
+          <ion-icon slot="start" name="person-outline"></ion-icon>
+          View Profile
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Security Tips</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            <h2>Enable Two-Factor Authentication</h2>
+            <p>Enhance your account security by enabling 2FA.</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <h2>Recognize Phishing Attempts</h2>
+            <p>Learn how to identify and avoid phishing scams.</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>News & Updates</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            <h2>New Feature: UPI AutoPay</h2>
+            <p>Set up automatic payments for your recurring bills.</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <h2>Maintenance Notice</h2>
+            <p>Our services will be down for maintenance on Feb 1, 2025.</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>User Achievements</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            <h2>100 Transactions Completed</h2>
+            <p>Congratulations on completing 100 transactions!</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <h2>₹50,000 Transferred</h2>
+            <p>You've transferred ₹50,000 using our app.</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>FAQs & Help</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            <h2>How to Reset Password?</h2>
+            <p>Follow these steps to reset your password.</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <h2>How to Contact Support?</h2>
+            <p>Reach out to our support team for assistance.</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  
+    <ion-card>
+  <ion-card-header>
+    <ion-card-title>Invite a Friend</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREerLV4dkMMY4qH0X4yZfRMP6iGF5HU-BPlg&s"></ion-img>
+    <ion-item>
+      <ion-label position="stacked">Invite friends to this application and get instant cashback when your friends sends their first payment. They get also instant cashback </ion-label>
+      <ion-input readonly value="so5882f" id="inviteKey"></ion-input>
+      <ion-button fill="clear" slot="end"  (click)="copyInviteKey()" class="transparent-button">
+        Copy
+      </ion-button>
+    </ion-item>
+    <ion-button expand="block" color="primary" (click)="inviteFriend()">
+      <ion-icon slot="start" name="share-outline"></ion-icon>
+      Invite 
+    </ion-button>
+  </ion-card-content>
+</ion-card>
+</ion-content>

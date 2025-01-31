@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="register-header">
+    <img src="https://iconscout.com/icon/transactions-8237300" alt="App Logo" class="logo">
+    <h2>Create an Account</h2>
+    <p>Join us and start managing your payments effortlessly</p>
+  </div>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input [(ngModel)]="user.name" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input [(ngModel)]="user.email" type="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input [(ngModel)]="user.password" type="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Phone Number</ion-label>
+        <ion-input [(ngModel)]="user.phonenumber" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Address</ion-label>
+        <ion-input [(ngModel)]="user.address" type="text"></ion-input>
+      </ion-item>
+      <ion-button expand="full" color="success" (click)="register()">Register</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="register-footer">
+    <p>Already have an account? <a routerLink="/login">Login here</a></p>
+  </div>
+</ion-content>

@@ -1,0 +1,153 @@
+// Variables for theme colors
+$background-color: #121212;
+$card-background: #1e1e1e;
+$accent-color: #bb86fc;
+$text-color: #ffffff;
+$card-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+
+:host {
+  ion-content {
+    --background: $background-color;
+    padding: 16px;
+
+    .welcome-card {
+      background: $card-background;
+      color: $text-color;
+      border-radius: 12px;
+      box-shadow: $card-shadow;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 16px;
+
+      ion-card-title {
+        font-size: 1.6rem;
+        font-weight: bold;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin-top: 8px;
+      }
+    }
+
+    ion-card {
+      background: $card-background;
+      border-radius: 12px;
+      box-shadow: $card-shadow;
+      margin-bottom: 16px;
+      padding: 16px;
+
+      ion-card-header {
+        background: $accent-color;
+        color: $text-color;
+        border-radius: 12px 12px 0 0;
+        padding: 16px;
+
+        ion-card-title {
+          font-size: 1.4rem;
+          font-weight: bold;
+        }
+      }
+
+      ion-card-content {
+        padding: 16px;
+
+        ion-list {
+          ion-item {
+            background: $card-background;
+            border-radius: 8px;
+            margin: 8px 0;
+            padding: 12px;
+            box-shadow: $card-shadow;
+
+            ion-label {
+              h2 {
+                font-size: 1.2rem;
+                color: $accent-color;
+              }
+
+              p {
+                font-size: 1rem;
+                color: $text-color;
+              }
+            }
+          }
+        }
+
+        .transparent-button {
+          color: $accent-color;
+          background: transparent;
+          box-shadow: none;
+          font-size: 1rem;
+          padding: 0;
+          margin-left: 8px;
+        }
+      }
+    }
+
+    ion-button {
+      margin: 8px 0;
+      border-radius: 8px;
+      box-shadow: $card-shadow;
+      font-size: 1rem;
+      padding: 12px 16px;
+      color: $text-color;
+
+      ion-icon {
+        margin-right: 18px;
+      }
+    }
+
+    .promo-banner {
+      margin: 16px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: $card-shadow;
+
+      ion-img {
+        width: 100%;
+        height: auto;
+      }
+
+      ion-card-content {
+        text-align: center;
+        padding: 16px;
+
+        p {
+          font-size: 1.2rem;
+          color: $text-color;
+        }
+      }
+    }
+
+    .theme-selector {
+      margin: 16px 0;
+
+      ion-card-header {
+        background: $accent-color;
+        color: $text-color;
+        border-radius: 12px 12px 0 0;
+        padding: 16px;
+      }
+
+      ion-card-content {
+        padding: 16px;
+
+        ion-list {
+          ion-item {
+            background: $card-background;
+            border-radius: 8px;
+            margin: 8px 0;
+            padding: 12px;
+            box-shadow: $card-shadow;
+
+            ion-label {
+              font-size: 1rem;
+              color: $text-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
