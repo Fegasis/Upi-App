@@ -67,6 +67,18 @@ const routes: Routes = [
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
   },
+  {
+    path: 'wallet',
+    loadChildren: () => import('./wallet/wallet.module').then( m => m.WalletPageModule)
+  },
+  {
+    path: 'payment-confirmation',
+    loadChildren: () => import('./payment-confirmation/payment-confirmation.module').then( m => m.PaymentConfirmationPageModule)
+  },
+  {
+    path: 'success-modal',
+    loadChildren: () => import('./success-modal/success-modal.module').then( m => m.SuccessModalPageModule)
+  },
 ];
 
 @NgModule({

@@ -16,11 +16,11 @@
       <ion-list>
         <ion-item>
           <ion-label position="stacked">Card Number</ion-label>
-          <ion-input [(ngModel)]="payment.cardNumber" type="text"></ion-input>
+          <ion-input [(ngModel)]="payment.card_number" type="text"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Expiry Date</ion-label>
-          <ion-input [(ngModel)]="payment.expiryDate" type="text"></ion-input>
+          <ion-input [(ngModel)]="payment.expiry_date" type="text"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">CVV</ion-label>
@@ -28,7 +28,7 @@
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Cardholder Name</ion-label>
-          <ion-input [(ngModel)]="payment.cardholderName" type="text"></ion-input>
+          <ion-input [(ngModel)]="payment.cardholder_name" type="text"></ion-input>
         </ion-item>
       </ion-list>
       <ion-button expand="full" color="success" (click)="processPayment()">Pay Now</ion-button>

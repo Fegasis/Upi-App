@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Payment Successful</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="success-container">
+    <ion-icon name="checkmark-circle" color="success" class="success-icon"></ion-icon>
+    <h2>Congratulations!</h2>
+    <p>Your payment was successful.</p>
+    <ion-button expand="full" color="success" (click)="dismiss()" class="unique-button">
+      <ion-icon name="checkmark-circle-outline"></ion-icon>
+      OK
+    </ion-button>  </div>
+</ion-content>

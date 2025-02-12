@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { TransactionsService } from '../services/transactions.service';
 import { Router } from '@angular/router';
 import { RazorpayService } from '../services/razorpay.service';
@@ -15,28 +15,23 @@ export class PaytocontactPage implements OnInit {
   phone_number: string = '';
   amount: number = 0;
   note: string = '';
+  
 
   constructor(private transactionService: TransactionsService,
               private router: Router,
-              private razorpayService: RazorpayService) { }
+              private razorpayService: RazorpayService,private navCtrl:NavController) { }
 
   ngOnInit() {
     this.razorpayService.initializeRazorpay();
   }
 
   payToContact() {
-    const transaction = {
-      // recipient_upi_id: this.recipient_upi_id,
-      recipient_phone_number: this.phone_number,
-      user_id: localStorage.getItem('userId'),
-      amount: this.amount,
-      // note: this.note,
-    };
-
-    this.transactionService.debitTransaction(transaction).subscribe(
-      response => {
-        console.log('Money sent successfully:', response);
+    this.navCtrl.navigateForward('/payment-confirmation', {
+      queryParams: {
+        phone_number: this.phone_number,
+        amount: this.amount,
+        note: this.note
       }
-    );
+    });
   }
 }

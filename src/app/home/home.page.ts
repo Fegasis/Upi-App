@@ -9,5 +9,10 @@ import { Component } from '@angular/core';
 export class HomePage {
 
   constructor() {}
-
+  toggleSection(sectionId: string) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.hidden = !section.hidden;
+    }
+  }
 }

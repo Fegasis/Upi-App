@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProfileService } from '../services/profile.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
-import { NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
+import { EditProfilePage } from '../edit-profile/edit-profile.page';
 
 @Component({
   selector: 'app-profile',
@@ -13,18 +14,21 @@ import { NavController } from '@ionic/angular';
 export class ProfilePage implements OnInit {
   @ViewChild('fileInput', { static: false }) fileInput: any;
 
-  profile :any={};
+  profile: any = {};
   username: any;
-  profile_data:any
+  profile_data: any;
+  userId: any;
 
   constructor(
     private profileService: ProfileService, 
     private http: HttpClient,
     private authService: AuthService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
+    this.userId = localStorage.getItem('userId');
     this.getProfile();
   }
 
@@ -33,11 +37,11 @@ export class ProfilePage implements OnInit {
   }
 
   getProfile() {
-    this.profileService.getProfile(1).subscribe(
+    this.profileService.getProfile(this.userId).subscribe(
       res => {
         this.profile = res;
         console.log('Profile data:', this.profile.items);
-        this.profile_data = this.profile.items.find((x:any)=>x.user_id===1)
+        this.profile_data = this.profile.items.find((x: any) => x.user_id == this.userId);
         console.log('Profile:', this.profile_data);
       },
       error => {
@@ -79,4 +83,17 @@ export class ProfilePage implements OnInit {
   navigateTo(page: string) {
     this.navCtrl.navigateForward(`/${page}`);
   }
+
+  async openEditProfile() {
+    const modal = await this.modalController.create({
+      component: EditProfilePage
+    });
+    return await modal.present();
+  }
+  logout() {
+    localStorage.removeItem('userToken'); 
+    sessionStorage.clear(); 
+    console.log('User logged out');  
+    this.navCtrl.navigateRoot('/login');
+  }  
 }

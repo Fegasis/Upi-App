@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/upi-home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Wallet</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Add Wallet -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Add Wallet</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">User ID</ion-label>
+        <ion-input [(ngModel)]="userId" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Balance</ion-label>
+        <ion-input [(ngModel)]="balance" type="number"></ion-input>
+      </ion-item>
+      <ion-button expand="full" (click)="addWallet()">Add Wallet</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Get Wallet Balance -->
+  <ion-card>
+    <ion-card-header (click)="toggleSection('getBalance')">
+      <ion-card-title>Get Wallet Balance</ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="sections.getBalance">
+      <ion-item>
+        <ion-label position="floating">User ID</ion-label>
+        <ion-input [(ngModel)]="userId" type="number"></ion-input>
+      </ion-item>
+      <ion-button expand="full" (click)="getWalletBalance()">Get Wallet Balance</ion-button>
+      <ion-item *ngIf="walletBalance !== undefined">
+        <ion-label>Wallet Balance: {{ walletBalance }}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Transfer Balance -->
+  <ion-card>
+    <ion-card-header (click)="toggleSection('transferBalance')">
+      <ion-card-title>Transfer Balance</ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="sections.transferBalance">
+      <ion-item>
+        <ion-label position="floating">Sender User ID</ion-label>
+        <ion-input [(ngModel)]="sender_user_id" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Receiver User ID</ion-label>
+        <ion-input [(ngModel)]="receiver_user_id" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Transfer Amount</ion-label>
+        <ion-input [(ngModel)]="balance" type="number"></ion-input>
+      </ion-item>
+      <ion-button expand="full" (click)="transferBalance()">Transfer Balance</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

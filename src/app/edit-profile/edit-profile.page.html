@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Edit Profile</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -18,6 +21,14 @@
       <ion-label position="floating">Phone</ion-label>
       <ion-input [(ngModel)]="profile.phone" name="phone" type="tel" required></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label position="floating">Address</ion-label>
+      <ion-input [(ngModel)]="profile.adress" name="address" type="text" required></ion-input>
+    </ion-item>
+    <!-- <ion-item>
+      <ion-label position="floating">Profile Image</ion-label>
+      <input type="file" (change)="onFileSelected($event)" />
+    </ion-item> -->
     <ion-button expand="full" type="submit">Update Profile</ion-button>
   </form>
 </ion-content>

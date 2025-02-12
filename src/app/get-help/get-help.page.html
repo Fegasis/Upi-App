@@ -8,15 +8,31 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <ion-card class="help-card">
     <ion-card-header>
       <ion-card-title>Contact Support</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-list>
         <ion-item>
+          <ion-label position="stacked">Subject</ion-label>
+          <ion-input [(ngModel)]="help.subject" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Priority</ion-label>
+          <ion-select [(ngModel)]="help.priority">
+            <ion-select-option value="low">Low</ion-select-option>
+            <ion-select-option value="medium">Medium</ion-select-option>
+            <ion-select-option value="high">High</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
           <ion-label position="stacked">Your Message</ion-label>
           <ion-textarea [(ngModel)]="help.message"></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Attach File</ion-label>
+          <input type="file" (change)="uploadFile($event)">
         </ion-item>
       </ion-list>
       <ion-button expand="full" color="success" (click)="sendHelpRequest()">Send</ion-button>

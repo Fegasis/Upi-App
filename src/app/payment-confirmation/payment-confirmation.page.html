@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/send-money"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Payment Confirmation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="payment-card">
+    <ion-card-header>
+      <ion-card-title>Confirm Payment</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="payment-details">
+        <p><strong>{{ getDisplayLabel() }}:</strong> {{ getDisplayIdentifier() }}</p>
+        <p><strong>Amount:</strong> ₹{{ amount }}</p>
+        <p><strong>Note:</strong> {{ note }}</p>
+      </div>
+      <ion-item>
+        <ion-label position="floating">Enter Pin</ion-label>
+        <ion-input [(ngModel)]="dummyPin" type="password" inputmode="numeric"></ion-input>
+      </ion-item>
+      <ion-button expand="full" color="primary" (click)="confirmPayment()">Done</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

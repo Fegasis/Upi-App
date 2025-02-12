@@ -3,6 +3,7 @@ import { TransactionsService } from '../services/transactions.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { ProfileService } from '../services/profile.service';
+import { IonicSlides } from '@ionic/angular';
 
 @Component({
   selector: 'app-upi-home',
@@ -11,6 +12,7 @@ import { ProfileService } from '../services/profile.service';
   standalone: false
 })
 export class UpiHomePage implements OnInit {
+  swipperModule = [IonicSlides]
   userId: any;
   name: any;
   email: any;
@@ -21,7 +23,9 @@ export class UpiHomePage implements OnInit {
   notifications: any[] = [];
   transactions: any;
   timeOfDay: string = '';
-  profile_data:any
+  profile_data:any;
+  banners:any[]=[];
+
 
   constructor(private transactionService: TransactionsService,private profileService:ProfileService, private router: Router, private authService: AuthService) { }
 
@@ -37,6 +41,9 @@ export class UpiHomePage implements OnInit {
     } else {
       console.error('User ID not found in localStorage');
     }
+
+    this.banners = this.profileService.banners;
+
   }
 
   getTransactions() {
@@ -88,11 +95,12 @@ export class UpiHomePage implements OnInit {
   // }
 
   getProfile() {
-    this.profileService.getProfile(1).subscribe(
+    this.profileService.getProfile(this.userId).subscribe(
       res => {
         this.profile = res;
+        console.log('User ID', this.userId);
         console.log('Profile data:', this.profile.items);
-        this.profile_data = this.profile.items.find((x:any)=>x.user_id===1)
+        this.profile_data = this.profile.items.find((x:any)=>x.user_id==this.userId)
         console.log('Profile:', this.profile_data);
       },
       error => {
@@ -138,6 +146,8 @@ export class UpiHomePage implements OnInit {
 
   scanQRCode() {
     console.log('Scan QR Code');
+    this.router.navigate(['/qr-scanner']);
+
   }
 
   payBills() {
@@ -170,11 +180,11 @@ export class UpiHomePage implements OnInit {
       case 'payToContactNumber':
         this.router.navigate(['/paytocontact']);
         break;
-      case 'quickBillPayments':
-        this.router.navigate(['/quick-bill-payments']);
+      case 'wallet':
+        this.router.navigate(['/wallet']);
         break;
-      case 'viewProfile':
-        this.router.navigate(['/profile']);
+      case 'settings':
+        this.router.navigate(['/settings']);
         break;
       default:
         console.log(`Unknown feature: ${feature}`);

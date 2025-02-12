@@ -17,13 +17,29 @@
       <ion-label>Privacy Settings</ion-label>
       <ion-toggle [(ngModel)]="settings.privacy"></ion-toggle>
     </ion-item>
-    <ion-item>
+    <!-- <ion-item>
       <ion-label>Language</ion-label>
       <ion-select [(ngModel)]="settings.language">
         <ion-select-option value="en">English</ion-select-option>
         <ion-select-option value="es">Spanish</ion-select-option>
-        <!-- Add more languages as needed -->
+        
       </ion-select>
+    </ion-item> -->
+    <!-- <ion-item>
+      <ion-label>Theme</ion-label>
+      <ion-select [(ngModel)]="settings.theme">
+        <ion-select-option value="light">Light</ion-select-option>
+        <ion-select-option value="dark">Dark</ion-select-option>
+        <ion-select-option value="system">System Default</ion-select-option>
+      </ion-select>
+    </ion-item> -->
+    <ion-item>
+      <ion-label>Account Security</ion-label>
+      <ion-toggle [(ngModel)]="settings.accountSecurity"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Manage Connected Devices</ion-label>
+      <ion-button expand="block" (click)="manageDevices()">Manage</ion-button>
     </ion-item>
   </ion-list>
   <ion-button expand="full" color="success" (click)="updateSettings()">Save Settings</ion-button>

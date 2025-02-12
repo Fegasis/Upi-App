@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TransactionsService } from '../services/transactions.service';
+import { ModalController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pay-bills',
@@ -8,15 +9,19 @@ import { TransactionsService } from '../services/transactions.service';
   standalone:false
 })
 export class PayBillsPage implements OnInit {
-  bill={user_id:1,amount:0,biller_id:0};
-  constructor(private transactionService:TransactionsService) { }
+  bill={user_id:'',amount:0,biller_id:''};
+  constructor(private transactionService:TransactionsService,private modalCtrl:ModalController, private navCtrl:NavController) { }
 
   ngOnInit() {
+    
   }
-  payBill(){
-    this.transactionService.payBill(this.bill).subscribe(res=>{
-      console.log('Bill paid: ',res);      
-    })
+  payBill() {
+    this.navCtrl.navigateForward('/payment-confirmation', {
+      queryParams: {
+        biller_id: this.bill.biller_id,
+        amount: this.bill.amount
+      }
+    });
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TransactionsService } from '../services/transactions.service';
 import { Router } from '@angular/router';
 import { RazorpayService } from '../services/razorpay.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-send-money',
@@ -17,33 +18,26 @@ export class SendMoneyPage implements OnInit {
   constructor(
     private transactionService: TransactionsService,
     private router: Router,
-    private razorpayService: RazorpayService
+    private razorpayService: RazorpayService,
+    private navCtrl: NavController
   ) { }
 
   ngOnInit() {
-    this.razorpayService.initializeRazorpay();
+    // this.razorpayService.initializeRazorpay();
   }
 
   payUsingUpiId() {
-    const transaction = {
-      recipient_upi_id: this.recipient_upi_id,
-      user_id: localStorage.getItem('userId'),
-      amount: this.amount,
-      note: this.note,
-    };
-
-    this.transactionService.debitTransaction(transaction).subscribe(
-      response => {
-        console.log('Money sent successfully:', response);
-        this.razorpayService.startPayment(this.amount.toString(), this.recipient_upi_id);
-      },
-      error => {
-        console.error('Error sending money:', error);
+    this.navCtrl.navigateForward('/payment-confirmation', {
+      queryParams: {
+        recipient_upi_id: this.recipient_upi_id,
+        amount: this.amount,
+        note: this.note
       }
-    );
+    });
   }
 
   navigateToPayToContact() {
     this.router.navigate(['/paytocontact']);
   }
+
 }

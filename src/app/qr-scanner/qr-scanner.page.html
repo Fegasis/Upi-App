@@ -1,15 +1,13 @@
-<!-- <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Scan QR Code</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/upi-home"></ion-back-button>
-    </ion-buttons>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>QR Scanner</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="qr-scanner-container">
-    <div id="qr-scanner" class="qr-scanner"></div>
+  <ion-button (click)="startScan()">Start Scan</ion-button>
+  <div *ngIf="scannedData">
+    <h2>Scanned Data:</h2>
+    <p>{{ scannedData }}</p>
   </div>
-  <ion-button expand="full" color="danger" (click)="stopScanning()">Stop Scanning</ion-button>
-</ion-content> -->
+</ion-content>

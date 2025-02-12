@@ -1,0 +1,15 @@
+<ion-row *ngIf="bannerImages?.length > 0">
+  <div class="swiper_div">
+    <swiper-container
+      [modules]="swiperModule"
+      [slidesPerView]="1"
+      [autoplay]="{ delay: 2000 }"
+      [spaceBetween]="25"
+      [pagination]="{ clickable: true, dynamicBullets: true }"
+    >
+      <swiper-slide *ngFor="let image of bannerImages">
+        <img [src]="image?.banner" class="swiper-image" />
+      </swiper-slide>
+    </swiper-container>
+  </div>
+</ion-row>

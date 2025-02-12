@@ -10,26 +10,32 @@ import { NavController } from '@ionic/angular';
 })
 export class PayUsingCardsPage implements OnInit {
   payment = {
-    cardNumber: '',
-    expiryDate: '',
+    user_id: localStorage.getItem('userId'),
+    card_number: '',
+    expiry_date: '',
     cvv: '',
-    cardholderName: ''
+    cardholder_name: ''
   };
   constructor(private http:HttpClient, private navCtrl:NavController) { }
 
   ngOnInit() {
   }
   processPayment() {
-    this.http.post('your-payment-api-endpoint', this.payment).subscribe(
+    console.log(JSON.stringify(this.payment));
+    
+    this.http.post('https://apex.oracle.com/pls/apex/rik/upiapp/pay_using_cards', this.payment, { responseType: 'text' }).subscribe(
       response => {
-        console.log('Payment processed successfully', response);
-        this.navCtrl.navigateForward('/profile');
+        try {
+          const jsonResponse = JSON.parse(response);
+          console.log('Payment processed successfully', jsonResponse);
+          this.navCtrl.navigateForward('/profile');
+        } catch (e) {
+          console.error('Error parsing JSON response:', e);
+        }
       },
       error => {
         console.error('Error processing payment:', error);
       }
     );
   }
-
-
 }

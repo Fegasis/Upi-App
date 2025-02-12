@@ -1,39 +1,55 @@
 .login-header {
-    text-align: center;
-    margin-top: 20px;
-  }
-  .logo {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 10px;
-  }
-  .login-header h2 {
-    margin: 0;
-    font-size: 1.5em;
-  }
-  .login-header p {
-    color: gray;
-  }
-  ion-card {
-    margin: 20px;
-  }
-  ion-card-content {
-    padding: 20px;
-  }
-  ion-item {
-    margin-bottom: 15px;
-  }
-  ion-button {
-    margin-top: 20px;
-  }
-  .login-footer {
-    text-align: center;
-    margin-top: 20px;
-  }
-  .login-footer p {
-    color: gray;
-  }
-  .login-footer a {
-    color: var(--ion-color-primary);
-    text-decoration: none;
-  }
+  text-align: center;
+  margin-top: 20px;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fdfbfb;
+}
+
+p {
+  font-size: 16px;
+  color: #666;
+}
+
+ion-card {
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+ion-item {
+  --highlight-color-focused: #3880ff;
+  // --background: #f9f9f9;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+ion-button {
+  --border-radius: 20px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-footer p {
+  font-size: 14px;
+  color: #666;
+}
+
+.login-footer a {
+  color: #3880ff;
+  text-decoration: none;
+  font-weight: bold;
+}
